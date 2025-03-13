@@ -1,0 +1,6 @@
+module "common" {
+  source = "../.common"
+}
+
+
+

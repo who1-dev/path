@@ -1,0 +1,5 @@
+.bin
+.tfvars
+**/key_pairs/*
+**/.terraform
+**/.terraform/*
