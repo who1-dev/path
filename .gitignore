@@ -1,5 +1,6 @@
 .bin
 .tfvars
 **/key_pairs/*
+**/policies/*
 **/.terraform
 **/.terraform/*
