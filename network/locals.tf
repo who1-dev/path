@@ -15,4 +15,6 @@ locals {
   natgw               = "${local.name_prefix}-natgw"
   private_route_table = "${local.name_prefix}-private-route-table"
 
+  vpcei_ssm    = "${local.name_prefix}-vpc-endpoint-interface-ssm"
+  vpcei_ssm_sg = "${local.vpcei_ssm}-sg"
 }

@@ -15,3 +15,13 @@ data "aws_ami" "latest_amazon_linux" {
     values = ["al2023-ami-*-x86_64"]
   }
 }
+
+data "aws_iam_role" "ec2_role" {
+  name = "LabRole" # Ensure there's no trailing space
+}
+
+# Create an instance profile for the IAM role
+resource "aws_iam_instance_profile" "ec2_instance_profile" {
+  name = "ec2-instance-profile"
+  role = data.aws_iam_role.ec2_role.name
+}

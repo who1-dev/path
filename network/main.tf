@@ -4,9 +4,9 @@ module "common" {
 
 # VPC
 resource "aws_vpc" "this" {
-  cidr_block           = "10.0.0.0/16"
-  enable_dns_support   = false
-  enable_dns_hostnames = false
+  cidr_block           = var.vpc_cidr_block
+  enable_dns_support   = true
+  enable_dns_hostnames = true
 
   tags = merge(local.default_tags, {
     Name = "${local.vpc}"
