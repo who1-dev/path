@@ -1,0 +1,1 @@
+![Architecture Diagram](assets/path.png)

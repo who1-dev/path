@@ -10,11 +10,11 @@ locals {
 
 
   # Resource Naming Conventions
-  vm1    = "${local.name_prefix}-vm1"
-  vm2    = "${local.name_prefix}-vm2"
-  vm3    = "${local.name_prefix}-vm3"
-  vm1_sg = "${local.name_prefix}-vm1-sg"
-  vm2_sg = "${local.name_prefix}-vm2-sg"
-  vm3_sg = "${local.name_prefix}-vm3-sg"
+  alpha    = "${local.name_prefix}-alpha"
+  beta     = "${local.name_prefix}-beta"
+  delta    = "${local.name_prefix}-delta"
+  alpha_sg = "${local.name_prefix}-alpha-sg"
+  beta_sg  = "${local.name_prefix}-beta-sg"
+  delta_sg = "${local.name_prefix}-delta-sg"
 
 }

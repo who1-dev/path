@@ -1,16 +1,16 @@
-resource "aws_key_pair" "beta_kp" {
-  key_name   = local.beta
-  public_key = file(var.beta_kp)
+resource "aws_key_pair" "delta_kp" {
+  key_name   = local.delta
+  public_key = file(var.delta_kp)
   tags = merge(
     local.default_tags, {
-      Name = "${local.beta}-KP"
+      Name = "${local.delta}-KP"
     }
   )
 }
 
-resource "aws_security_group" "beta_sg" {
-  name        = local.beta_sg
-  description = "Security Group for Beta"
+resource "aws_security_group" "delta_sg" {
+  name        = local.delta_sg
+  description = "Security Group for delta"
   vpc_id      = local.network_remote_state.vpc_id
 
   egress {
@@ -21,14 +21,14 @@ resource "aws_security_group" "beta_sg" {
   }
   tags = merge(
     local.default_tags, {
-      Name = "${local.beta_sg}"
+      Name = "${local.delta_sg}"
     }
   )
 }
 
-resource "aws_security_group_rule" "beta_allow_https" {
+resource "aws_security_group_rule" "delta_allow_https" {
   type              = "ingress"
-  security_group_id = aws_security_group.beta_sg.id
+  security_group_id = aws_security_group.delta_sg.id
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
@@ -37,20 +37,20 @@ resource "aws_security_group_rule" "beta_allow_https" {
 }
 
 
-resource "aws_instance" "beta" {
+resource "aws_instance" "delta" {
   ami                    = data.aws_ami.latest_amazon_linux.id
   instance_type          = "t2.micro"
-  key_name               = aws_key_pair.beta_kp.key_name
-  subnet_id              = local.network_remote_state.private_subnets[1]
-  vpc_security_group_ids = [aws_security_group.beta_sg.id]
+  key_name               = aws_key_pair.delta_kp.key_name
+  subnet_id              = local.network_remote_state.private_subnets[0]
+  vpc_security_group_ids = [aws_security_group.delta_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
   user_data = templatefile(var.user_data, {
     efs_id = aws_efs_file_system.this.dns_name
   })
   tags = merge(
     local.default_tags, {
-      Name = "${local.beta}"
+      Name = "${local.delta}"
     }
   )
-  depends_on = [aws_security_group.beta_sg, aws_key_pair.beta_kp, aws_efs_file_system.this]
+  depends_on = [aws_security_group.delta_sg, aws_key_pair.delta_kp, aws_efs_file_system.this]
 }

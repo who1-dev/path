@@ -31,8 +31,8 @@ resource "aws_efs_file_system" "this" {
 
 # Create EFS Mount Target for each public subnet
 resource "aws_efs_mount_target" "this" {
-  for_each       = toset(local.network_remote_state.private_subnets) # Loop through private subnets
-  file_system_id = aws_efs_file_system.this.id
-  subnet_id      = each.value 
+  for_each        = toset(local.network_remote_state.private_subnets) # Loop through private subnets
+  file_system_id  = aws_efs_file_system.this.id
+  subnet_id       = each.value
   security_groups = [aws_security_group.efs_sg.id]
 }
