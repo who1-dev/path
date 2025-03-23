@@ -9,7 +9,7 @@ resource "aws_security_group" "efs_sg" {
     from_port       = 2049
     to_port         = 2049
     protocol        = "tcp"
-    security_groups = [aws_security_group.vm1_sg.id, aws_security_group.vm2_sg.id]
+    security_groups = [aws_security_group.alpha_sg.id, aws_security_group.beta_sg.id, aws_security_group.delta_sg.id]
   }
 
   egress {

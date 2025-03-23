@@ -1,6 +1,6 @@
 resource "aws_iam_user" "alpha" {
   for_each = var.alpha_users
-  name    = each.value.username
+  name     = each.value.username
 
   tags = merge(local.default_tags, {
     "access-project" = "alpha"
@@ -10,7 +10,7 @@ resource "aws_iam_user" "alpha" {
 
 resource "aws_iam_user" "beta" {
   for_each = var.beta_users
-  name    = each.value.username
+  name     = each.value.username
 
   tags = merge(local.default_tags, {
     "access-project" = "beta"
@@ -21,7 +21,7 @@ resource "aws_iam_user" "beta" {
 
 resource "aws_iam_user" "delta" {
   for_each = var.delta_users
-  name    = each.value.username
+  name     = each.value.username
 
   tags = merge(local.default_tags, {
     "access-project" = "delta"
