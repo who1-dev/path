@@ -49,7 +49,8 @@ resource "aws_instance" "delta" {
   })
   tags = merge(
     local.default_tags, {
-      Name = "${local.delta}"
+      Name             = "${local.delta}"
+      "access-project" = "delta"
     }
   )
   depends_on = [aws_security_group.delta_sg, aws_key_pair.delta_kp, aws_efs_file_system.this]

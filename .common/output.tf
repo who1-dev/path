@@ -7,5 +7,5 @@ output "namespace" {
 }
 
 output "default_region" {
-  value = "us-east-1"
+  value = "us-east-2"
 }

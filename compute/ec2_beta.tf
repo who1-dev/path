@@ -49,7 +49,8 @@ resource "aws_instance" "beta" {
   })
   tags = merge(
     local.default_tags, {
-      Name = "${local.beta}"
+      Name             = "${local.beta}"
+      "access-project" = "beta"
     }
   )
   depends_on = [aws_security_group.beta_sg, aws_key_pair.beta_kp, aws_efs_file_system.this]

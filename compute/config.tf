@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "pathomics-infra-state-05f8he"
+    bucket = "pathomics-infra-state-05f8hes"
     key    = "compute/terraform.tfstate"
-    region = "us-east-1"
+    region = "us-east-2"
   }
   required_version = ">= 0.13" # Ensure you're using Terraform 0.13 or newer
 }

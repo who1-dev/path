@@ -5,3 +5,5 @@
 **/.terraform
 **/.terraform/*
 **/user_data/*
+
+terraform.tfstate*

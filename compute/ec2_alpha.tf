@@ -49,7 +49,8 @@ resource "aws_instance" "alpha" {
   })
   tags = merge(
     local.default_tags, {
-      Name = "${local.alpha}"
+      Name             = "${local.alpha}"
+      "access-project" = "alpha"
     }
   )
   depends_on = [aws_security_group.alpha_sg, aws_key_pair.alpha_kp, aws_efs_file_system.this]

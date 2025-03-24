@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "vpcei_ssm_sg_https" {
 # Create a VPC Endpoint for SSM
 resource "aws_vpc_endpoint" "ssm_endpoint" {
   vpc_id            = aws_vpc.this.id
-  service_name      = "com.amazonaws.us-east-1.ssm"
+  service_name      = "com.amazonaws.${data.aws_region.current.name}.ssm"
   vpc_endpoint_type = "Interface"
   subnet_ids        = [aws_subnet.private[0].id]
 
@@ -45,7 +45,7 @@ resource "aws_vpc_endpoint" "ssm_endpoint" {
 # Create a VPC Endpoint for SSM Messages
 resource "aws_vpc_endpoint" "ssmmessages_endpoint" {
   vpc_id            = aws_vpc.this.id
-  service_name      = "com.amazonaws.us-east-1.ssmmessages"
+  service_name      = "com.amazonaws.${data.aws_region.current.name}.ssmmessages"
   vpc_endpoint_type = "Interface"
   subnet_ids        = [aws_subnet.private[0].id]
 
@@ -59,7 +59,7 @@ resource "aws_vpc_endpoint" "ssmmessages_endpoint" {
 # Create a VPC Endpoint for EC2 Messages
 resource "aws_vpc_endpoint" "ec2messages_endpoint" {
   vpc_id            = aws_vpc.this.id
-  service_name      = "com.amazonaws.us-east-1.ec2messages"
+  service_name      = "com.amazonaws.${data.aws_region.current.name}.ec2messages"
   vpc_endpoint_type = "Interface"
   subnet_ids        = [aws_subnet.private[0].id]
 

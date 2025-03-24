@@ -11,6 +11,8 @@ for dir in "${DIRECTORIES[@]}"; do
   if [ -f "$dir/main.tf" ] || [ -f "$dir/terraform.tf" ]; then
     cd "$dir" || { echo "Failed to enter $dir"; exit 1; }
 
+    terraform init
+
     # Run Terraform commands
     echo "Running 'terraform fmt' in $dir..."
     terraform fmt -recursive || { echo "Error during 'terraform fmt'. Exiting."; exit 1; }
